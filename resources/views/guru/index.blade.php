@@ -40,12 +40,16 @@ guru
                 <thead>
                     <th>No.</th>
                     <th>Nama</th>
+                    <th>jenis_kelamin</th>
+                    <th>mapel_id</th>
                     <th>Aksi</th>
                 </thead>
                 @foreach ($guru as $item)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$item->nama}}</td>
+                    <td>{{$item->jenis_kelamin}}</td>
+                    <td>{{ ! empty($item->mapel->nama) ?  $item->mapel->nama : '' }}</td>
                     <td>
 
                     </td>
@@ -80,8 +84,15 @@ guru
                     data: 'nama'
                 },
                 {
+                    data: 'jenis_kelamin'
+                },
+                {   
+                    data: 'mapel_id'
+                },
+                {
                     data: 'aksi'
                 }
+                
             ]
         });
     });

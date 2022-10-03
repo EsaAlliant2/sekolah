@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\Mapel;
 use Illuminate\Http\Request;
 use Validator;
 
-class MapelController extends Controller
+class GuruController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +16,14 @@ class MapelController extends Controller
      */
     public function index()
     {
+        $guru = Guru::all();
         $mapel = Mapel::all();
-        return view('guru.index', compact('guru'));
+
+        return view('guru.index', compact('guru', 'mapel'));
     }
 
     public function data(){
-        $guru = guru::orderBy('id', 'asc')->get();
+        $guru = Guru::orderBy('id', 'asc')->get();
 
         return datatables()
         ->of($guru)
@@ -76,12 +79,12 @@ class MapelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\guru  $guru
+     * @param  \App\Models\Guru  $guru
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $guru = guru::find($id);
+        $guru = Guru::find($id);
         return response()->json($guru);
     }
 
@@ -91,7 +94,7 @@ class MapelController extends Controller
      * @param  \App\Models\guru  $guru
      * @return \Illuminate\Http\Response
      */
-    public function edit(guru $guru)
+    public function edit(Guru $guru)
     {
         //
     }
@@ -105,7 +108,7 @@ class MapelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $guru = guru::find($id);
+        $guru = Guru::find($id);
         $guru->nama = $request->nama;
         $guru->update();
         return response()->json('Data berhasil disimpan');
@@ -119,7 +122,7 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        $guru = guru::find($id);
+        $guru = Guru::find($id);
         $guru->delete();
 
         return response()->json(null, 204);

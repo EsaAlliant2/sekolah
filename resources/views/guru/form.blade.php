@@ -29,10 +29,10 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="mapel_id">mapel_id</label>
+                        <label for="mapel">mapel</label>
                         <select name="mapel_id" id="mapel_id" class="form-control">
                             @foreach($mapel as $item)
-                                <option value="{{$item->}}">{{$item->$id}}</option>
+                                <option value="{{$item->id}}">{{$item->nama}}</option>
                             @endforeach
                         </select></div>
 
