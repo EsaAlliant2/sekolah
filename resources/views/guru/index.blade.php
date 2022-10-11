@@ -29,7 +29,9 @@ guru
             <div class="card-tools">
                 </button>
                 <button type="button" onclick="addForm('{{route('guru.store')}}')" class="btn btn-tool">
+                <div class="btn btn-sm btn-primary shadow-sm rounded-pill" style="width: 95px;">
                     <i class="fas fa-plus"></i>
+                </div>
                 </button>
             </div>
         </div>
@@ -40,6 +42,7 @@ guru
                 <thead>
                     <th>No.</th>
                     <th>Nama</th>
+                    <th>alamat</th>
                     <th>jenis_kelamin</th>
                     <th>mapel_id</th>
                     <th>Aksi</th>
@@ -48,6 +51,7 @@ guru
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{$item->nama}}</td>
+                    <td>{{ $item->alamat }}</td>
                     <td>{{$item->jenis_kelamin}}</td>
                     <td>{{ ! empty($item->mapel->nama) ?  $item->mapel->nama : '' }}</td>
                     <td>
@@ -82,6 +86,9 @@ guru
                 },
                 {
                     data: 'nama'
+                },
+                {
+                    data: 'alamat'
                 },
                 {
                     data: 'jenis_kelamin'

@@ -62,11 +62,17 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(),[
-            'nama' => 'required'
+            'nama' => 'required',
+            'alamat' => 'required',
+            'jenis_kelamin' => 'required',
+            'mapel_id' => 'required'
         ]);
 
        $guru = guru::create([
-        'nama' => $request->nama
+        'nama' => $request->nama,
+        'alamat' => $request->alamat,
+        'jenis_kelamin' => $request->jenis_kelamin,
+        'mapel_id' => $request->mapel_id
        ]);
 
        return response()->json([
@@ -110,7 +116,11 @@ class GuruController extends Controller
     {
         $guru = Guru::find($id);
         $guru->nama = $request->nama;
+        $guru->alamat = $request->alamat;
+        $guru->jenis_kelamin = $request->jenis_kelamin;
+        $guru->mapel_id = $request->mapel_id;
         $guru->update();
+
         return response()->json('Data berhasil disimpan');
     }
 

@@ -13,10 +13,20 @@
                 <form action="" method="POST">
                     @csrf
                     @method('PUT')
-
                     <div class="form-group">
+                        
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control" name="nama" id="nama">
+                    </div>
+
+                    <div class="my-1">
+                        <label class="mb-2" for="floatingTextarea">Alamat</label>
+                        <textarea class="form-control @error('alamat') is-invalid @enderror"  id="floatingTextarea" name="alamat" placeholder="Alamat"></textarea>
+                        @error('alamat')
+                            <div class="text-danger">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
 
                     <div class="form-group">

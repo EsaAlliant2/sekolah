@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->enum('jenis_kelamin',['laki-laki','perempuan']);
-            $table->integer('mapel_id');
-            $table->integer('kelas_id');
+            $table->string('alamat');
+            $table->integer('mapel_id')->nullable();
+            $table->integer('kelas_id')->nullable();
             $table->timestamps();
         });
     }
