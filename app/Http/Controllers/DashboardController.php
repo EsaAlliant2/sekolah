@@ -17,6 +17,10 @@ class DashboardController extends Controller
         $siswa = Siswa::all();
         $kelas = Kelas::all();
 
-        return view('dashboard.index', compact('guru', 'mapel', 'kelas', 'siswa'));
+        $id_siswa = auth()->user()->id;
+
+        $find_siswa = Siswa::where('user_id', $id_siswa)->get();
+        return view('dashboard.index', compact('guru', 'mapel', 'kelas', 'siswa','find_siswa'));
+
     }
 }

@@ -81,11 +81,20 @@
                 <table class="table table-striped">
                     <tr>
                         <th>Mata Pelajaran</th>
-                        <th>Guru</th>
+                        <th>kelas</th>
                     </tr>
                 </table>
             </div>
         </div>
+
+        <tbody>
+            @foreach ($find_siswa as $item)
+                <tr>
+                    <td>{{$item->mapel->nama}}</td>
+                    <td>{{$item->kelas->nama}}</td>
+                </tr>
+            @endforeach
+        </tbody>
 
     </div>
     @endif
